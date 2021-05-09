@@ -1,2 +1,14 @@
-<p>mods-home works!</p>
-<app-modal></app-modal>
+<app-divider>Modal component</app-divider>
+<button (click)="onClick()">Show modal</button>
+<app-modal (close)="onClick()" *ngIf="showModal">
+  <div modalTitle>Modal title</div>
+  <div modalContent>
+    <p>This is where the main content is being shown</p>
+  </div>
+  <ng-container modalbuttons>
+    <!-- <button (click)="onClick()" class="ui black deny button">Reject</button>
+    <button (click)="onClick()" class="ui positive right labeled icon button">
+      Accept
+    </button> -->
+  </ng-container>
+</app-modal>

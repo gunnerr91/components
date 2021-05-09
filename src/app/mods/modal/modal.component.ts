@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent implements OnInit {
+  @Output() close = new EventEmitter();
 
-  constructor() { }
+  constructor(private el: ElementRef) {}
 
   ngOnInit(): void {
+    document.body.appendChild(this.el.nativeElement);
   }
 
+  ngOnDestroy(): void {
+    this.el.nativeElement.remove();
+    // document.body.removeChild(this.el.nativeElement);
+  }
+
+  onCloseClick(): void {
+    this.close.emit();
+  }
 }
