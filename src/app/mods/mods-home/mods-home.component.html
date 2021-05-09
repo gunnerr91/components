@@ -6,9 +6,11 @@
     <p>This is where the main content is being shown</p>
   </div>
   <ng-container modalbuttons>
-    <!-- <button (click)="onClick()" class="ui black deny button">Reject</button>
+    <button (click)="onClick()" class="ui black deny button">Reject</button>
     <button (click)="onClick()" class="ui positive right labeled icon button">
       Accept
-    </button> -->
+    </button>
   </ng-container>
 </app-modal>
+<app-divider>Accordion component</app-divider>
+<app-accordion [items]="items"></app-accordion>

@@ -7,6 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModsHomeComponent implements OnInit {
   showModal = false;
+  items = [
+    {
+      title: 'Title 1',
+      content: 'content for title 1',
+    },
+    {
+      title: 'Title 2',
+      content: 'content for title 2',
+    },
+    {
+      title: 'Title 3',
+      content: 'content for title 3',
+    },
+  ];
   constructor() {}
 
   ngOnInit(): void {}
