@@ -1,6 +1,7 @@
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { TimesDirective } from '../times.directive';
 
 import { PlaceholderComponent } from './placeholder.component';
 
@@ -38,12 +39,19 @@ describe('PlaceholderComponent', () => {
     fixture.detectChanges();
     expect(de.query(By.css('.header'))).toBeFalsy();
   });
+});
 
-  // it('renders lines specified by input props', () => {
-  //   component.lines = 15;
-  //   fixture.detectChanges();
-  //   expect(de.query(By.css('.paragraph')).nativeElement.innerHTML.length).toBe(
-  //     15
-  //   );
-  // });
+describe('placeholder component tests v2', () => {
+  it('renders lines specified by input props', () => {
+    TestBed.configureTestingModule({
+      declarations: [PlaceholderComponent, TimesDirective],
+    });
+    const fixture = TestBed.createComponent(PlaceholderComponent);
+    const component = fixture.componentInstance;
+    component.lines = 3;
+    fixture.detectChanges();
+    const paragraphElement: HTMLElement = fixture.nativeElement;
+    expect(paragraphElement.innerHTML).toContain('di');
+    expect(paragraphElement.querySelectorAll('.line').length).toEqual(3);
+  });
 });
